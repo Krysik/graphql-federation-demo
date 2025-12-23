@@ -1,0 +1,31 @@
+{
+  "type": "module",
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --import @swc-node/register/esm-register --enable-source-maps src/main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@swc-node/register": "^1.11.1",
+    "@types/node": "^25.0.3",
+    "eslint": "^9.39.2",
+    "globals": "^16.5.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.50.0"
+  },
+  "dependencies": {
+    "@apollo/subgraph": "^2.12.2",
+    "@pothos/core": "^4.10.0",
+    "@pothos/plugin-directives": "^4.2.5",
+    "@pothos/plugin-federation": "^4.4.2",
+    "fastify": "^5.6.2",
+    "graphql": "^16.12.0",
+    "mercurius": "^16.6.0"
+  }
+}
