@@ -1,0 +1,24 @@
+type Review {
+  id: ID!
+  title: String!
+  content: String!
+  author: User!
+}
+
+type User {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  reviews: [Review!]!
+}
+
+input NewReview {
+  title: String!
+  content: String!
+}
+
+type Mutation {
+  createReview(input: NewReview!): Review!
+}
