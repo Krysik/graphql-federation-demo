@@ -2,6 +2,13 @@
 
 package model
 
+type Movie struct {
+	ID      string    `json:"id"`
+	Reviews []*Review `json:"reviews"`
+}
+
+func (Movie) IsEntity() {}
+
 type Mutation struct {
 }
 
@@ -17,10 +24,6 @@ type Review struct {
 	ID      string `json:"id"`
 	Title   string `json:"title"`
 	Content string `json:"content"`
-	Author  *User  `json:"author"`
 }
 
-type User struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
+func (Review) IsEntity() {}

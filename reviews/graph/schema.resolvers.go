@@ -8,38 +8,21 @@ package graph
 import (
 	"context"
 
+	"github.com/Krysik/gql-federation-demo/domain"
 	"github.com/Krysik/gql-federation-demo/graph/model"
 )
 
-var reviews []*model.Review = []*model.Review{
-	&model.Review{
-		ID:      "id-1",
-		Title:   "Title 1",
-		Content: "Content 1",
-		Author: &model.User{
-			ID:   "usr-1",
-			Name: "John",
-		},
-	},
-}
-
 // CreateReview is the resolver for the createReview field.
 func (r *mutationResolver) CreateReview(ctx context.Context, input model.NewReview) (*model.Review, error) {
-	review := model.Review{
-		ID:      "id-2",
-		Title:   input.Title,
-		Content: input.Content,
-		Author:  &model.User{ID: "usr-2", Name: "Jane"},
-	}
-
-	reviews = append(reviews, &review)
-
-	return &review, nil
+	review, err := domain.CreateReview(input.Title, input.Content)
+	return review, err
 }
 
 // Reviews is the resolver for the reviews field.
 func (r *queryResolver) Reviews(ctx context.Context) ([]*model.Review, error) {
-	return reviews, nil
+	reviews, err := domain.GetReviews()
+
+	return reviews, err
 }
 
 // Mutation returns MutationResolver implementation.

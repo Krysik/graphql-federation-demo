@@ -1,16 +1,15 @@
-type Review {
+type Review @key(fields: "id") {
   id: ID!
   title: String!
   content: String!
-  author: User!
-}
-
-type User {
-  id: ID!
-  name: String!
 }
 
 type Query {
+  reviews: [Review!]!
+}
+
+extend type Movie @key(fields: "id") {
+  id: ID!
   reviews: [Review!]!
 }
 

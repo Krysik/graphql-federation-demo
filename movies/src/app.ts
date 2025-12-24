@@ -1,8 +1,11 @@
+import fs from "node:fs/promises";
+
 import fastify from "fastify";
 import mercurius from "mercurius";
 
 import { createSchemaBuilder } from "./schema-builder.js";
 import { buildMovieEntity, getMovieById } from "./entities/movie.js";
+import { printSchema } from "graphql";
 
 export { createApp };
 
@@ -58,6 +61,8 @@ async function createApp() {
     path: "/",
     graphiql: "graphiql",
   });
+
+  await fs.writeFile("schema.graphql", printSchema(builder.toSchema()));
 
   return app;
 }
