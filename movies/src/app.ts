@@ -55,11 +55,20 @@ async function createApp() {
   );
 
   builder.queryType();
+  const schema = builder.toSubGraphSchema({
+    // defaults to v2.6
+    linkUrl: "https://specs.apollo.dev/federation/v2.3",
+    // defaults to the list of directives used in your schema
+    federationDirectives: ["@key", "@external", "@requires", "@provides"],
+  });
 
   await app.register(mercurius, {
-    schema: builder.toSchema(),
+    schema,
     path: "/",
     graphiql: "graphiql",
+    errorHandler(err, request, reply) {
+      console.dir(err, { depth: null });
+    },
   });
 
   await fs.writeFile("schema.graphql", printSchema(builder.toSchema()));

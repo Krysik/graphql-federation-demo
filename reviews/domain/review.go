@@ -10,8 +10,8 @@ import (
 var reviews = []*model.Review{
 	&model.Review{
 		ID:      "id-1",
-		Title:   "Title 1",
-		Content: "Content 1",
+		Title:   "First review title 1",
+		Content: "First review content",
 	},
 }
 

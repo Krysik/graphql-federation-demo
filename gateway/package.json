@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --import @swc-node/register/esm-register --enable-source-maps src/main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/gateway": "^2.12.2",
+    "@apollo/server": "^5.2.0",
+    "graphql": "^16.12.0"
+  },
+  "devDependencies": {
+    "@swc-node/register": "^1.11.1",
+    "typescript": "^5.9.3"
+  }
+}
