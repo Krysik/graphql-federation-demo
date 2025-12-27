@@ -10,11 +10,11 @@ async function main() {
       subgraphs: [
         {
           name: "movies",
-          url: "http://localhost:5001/",
+          url: "http://localhost:5001",
         },
         {
           name: "reviews",
-          url: "http://localhost:8080/query",
+          url: "http://localhost:5002",
         },
       ],
     }),
