@@ -2,10 +2,10 @@ import fs from "node:fs/promises";
 
 import fastify from "fastify";
 import mercurius from "mercurius";
+import { printSchema } from "graphql";
 
 import { createSchemaBuilder } from "./schema-builder.js";
 import { buildMovieEntity, getMovieById } from "./entities/movie.js";
-import { printSchema } from "graphql";
 
 export { createApp };
 
@@ -71,7 +71,11 @@ async function createApp() {
     },
   });
 
-  await fs.writeFile("schema.graphql", printSchema(builder.toSchema()));
+  const isProd = process.env.NODE_ENV === "production";
+
+  if (!isProd) {
+    await fs.writeFile("schema.graphql", printSchema(builder.toSchema()));
+  }
 
   return app;
 }

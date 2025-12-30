@@ -1,0 +1,9 @@
+services:
+  movies:
+    build:
+      context: ./movies
+      dockerfile: Dockerfile
+    environment:
+      - PORT=5001
+    ports:
+      - "${PORT}:5001"
