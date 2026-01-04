@@ -7,3 +7,12 @@ services:
       - PORT=5001
     ports:
       - "${PORT}:5001"
+
+  reviews:
+    build:
+      context: ./reviews
+      dockerfile: Dockerfile
+    environment:
+      - PORT=5002
+    ports:
+      - "${PORT}:5002"
